@@ -1,12 +1,15 @@
 ﻿# tensorflow
 
 ■ dimensions 늘리는 법
+
 tf.expand_dims(a, axis = 0)
 
 ■ dimensions 줄이는 법
+
 tf.squeeze(d)
 
 ■ 니가 만들고 싶은 길이로 랜덤하게 텐서 만드는 법
+
 tf.random.uniform(shape=(2, 3), minval=0, maxval=1)
 tf.random.normal(shape=(2,3)) # mean=0, stddev=1
 tf.random.truncated_normal(shape=(2, 3)) # mean=0, stddev=1
