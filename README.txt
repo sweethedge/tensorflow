@@ -36,7 +36,11 @@ with tf.GradientTape(persistent=True) as tape:
 -- tape.gradient(계산식, x)로 미분
 dx, dy = tape.gradient(z, [x, y])
 
+0407
 ■ Gradient Descent
 1. 배열을 준비
 2. 가중치와 noise도 준비
+step = lr * fprime(x)
 3. 테이프에 f(x)를 넣고 미분한 값을 assign_sub
+x.assign_sub(step)
+■ tf.math.multiply() == tf.reduce_prod()
