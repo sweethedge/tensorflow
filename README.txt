@@ -63,8 +63,29 @@ loss 함수를 만든다. model이 함수를 그려주면 input과의 차이를 
 - categorical_crossentropy
 -- mnist처럼 categorical한 데이터를 model이 분류해야 하면 categorical_crossentropy
 - mse or rmse
--- 어떤 수치를 예측하고 싶으면 metrics에 mse or rmse
+-- 어떤 수치를 예측하고 싶으면 metrics에 mse or rmse, mae
 -- binary 문제를 쓸 때는 sigmoid
 -- 여러 개 중에 고르고 싶을 때는 softmax
 -- 0이 mean이 되고 -1 ~ 1이 되는 활성화함수가 필요하면 tanh(Hyperbolic tangent function)
 
+■ keras.dataset 분석하는 법
+1. (x_train, y_train), (x_test, y_test) = 어쩌구.load_data()
+2. model = tf.keras.Sequential()
+3. model.add(tf.keras.layers.Dense(units=10, input_dim=x_train.shape[1])) (model.add는 하고 싶은 만큼 하시면 된다)
+3-1. model.summary()
+4. opt = tf.keras.optimizers.RMSprop() # default learning_rate = 0.001
+5. model.compile(optimizer=opt, loss='mse', metrics=['mae'])
+6. ret = model.fit(x_train, y_train, epochs=100, validation_split=0.2, verbose=0)
+7. model의 loss 값을 알고 싶으면 tf.keras.Sequential().evaluate(X, Y)
+train_loss = model.evaluate(x_train, y_train, verbose=2)
+test_loss = model.evaluate(x_test, y_test, verbose=2)
+8. 만든 model로 예측하고 싶으면 model.predict(검정 데이터)
+y_pred = model.predict(x_test)
+
+9.
+plt.ylabel("median value of owner-occupied homes in $1000s")
+plt.plot(y_pred, "r-", label="y_pred")
+plt.plot(y_test, "b-", label="y_test")
+# loc : int or string or pair of floats, default: ‘upper right’
+plt.legend(loc='best')
+plt.show()
