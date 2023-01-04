@@ -83,7 +83,7 @@ test_loss = model.evaluate(x_test, y_test, verbose=2)
 y_pred = model.predict(x_test)
 
 9.
-plt.ylabel("median value of owner-occupied homes in $1000s")
+plt.ylabel("니가 documentation에서 읽은 y_train이 나타내는 그거")
 plt.plot(y_pred, "r-", label="y_pred")
 plt.plot(y_test, "b-", label="y_test")
 # loc : int or string or pair of floats, default: ‘upper right’
