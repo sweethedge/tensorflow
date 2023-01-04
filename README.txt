@@ -44,3 +44,27 @@ step = lr * fprime(x)
 3. 테이프에 f(x)를 넣고 미분한 값을 assign_sub
 x.assign_sub(step)
 ■ tf.math.multiply() == tf.reduce_prod()
+
+■ model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+□ metrics
+니가 혼돈행렬에서 봤던 그거다. precision이나 recall, Fil-score같은 걸 써 볼 수 있겠다.
+- accuracy
+-- 맞는 걸 맞고, 틀린 걸 틀렸다고 한 비율
+- precision
+-- 맞는 걸 맞고, 틀린 걸 맞다고 한 것 중 맞는 걸 맞다고 한 비율
+- recall
+-- 맞는 걸 맞고, 맞는 걸 틀렸다고 한 것 중 맞는 걸 맞다고 한 비율.
+
+precision과 recall은 trade-off 관계에 있다고 얘기를 한다.
+보통은 accuracy를 쓰게 되는데, precision이 중요한 경우가 있다고들 한다. 예를 들어서 spam filter를 짜고 싶으면 metrics에 accuracy보다는 precision을 쓰셔야 될 거다.
+
+□ loss 함수
+loss 함수를 만든다. model이 함수를 그려주면 input과의 차이를 loss 함수를 만들어서 계산하고, 이에 따라서 loss가 최소가 되도록 조율을 한다.
+- categorical_crossentropy
+-- mnist처럼 categorical한 데이터를 model이 분류해야 하면 categorical_crossentropy
+- mse or rmse
+-- 어떤 수치를 예측하고 싶으면 metrics에 mse or rmse
+-- binary 문제를 쓸 때는 sigmoid
+-- 여러 개 중에 고르고 싶을 때는 softmax
+-- 0이 mean이 되고 -1 ~ 1이 되는 활성화함수가 필요하면 tanh(Hyperbolic tangent function)
+
