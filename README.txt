@@ -89,3 +89,11 @@ plt.plot(y_test, "b-", label="y_test")
 # loc : int or string or pair of floats, default: ‘upper right’
 plt.legend(loc='best')
 plt.show()
+
+■ Convolution 연산 왜 할까
+- 이미지 한 장의 shape가 (30000, 32, 32, 3)쯤 된다. 그거 하나하나 다 연산할 수 있나?
+- filter(=kernel)으로 연산하면 그 단위연산의 수가 filter의 수로 급격하게 줄어든다. filter가 (3, 3) 이라면 단위당 9로 줄어드는 거지.
+
+■ padding은 왜 씌울까
+- Convolution 연산의 특성상 가장자리는 연산을 덜하게 된다. 몇 픽셀가지고 그러냐고 하지만 그게 중요한 경우도 있을 수 있다. 씌우는 법은 별 거 없고 tf.keras.layers.Conv2D(..., padding='same')
+
