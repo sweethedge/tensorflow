@@ -47,7 +47,7 @@ x.assign_sub(step)
 
 ■ model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
 □ metrics
-니가 혼돈행렬에서 봤던 그거다. precision이나 recall, Fil-score같은 걸 써 볼 수 있겠다.
+니가 혼돈행렬에서 봤던 그거다. precision이나 recall, F1-score같은 걸 써 볼 수 있겠다.
 - accuracy
 -- 맞는 걸 맞고, 틀린 걸 틀렸다고 한 비율
 - precision
